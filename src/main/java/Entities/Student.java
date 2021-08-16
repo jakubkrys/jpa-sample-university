@@ -5,7 +5,9 @@ import javax.persistence.*;
 @Entity
 @Table(name="student")
 public class Student {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
@@ -19,7 +21,7 @@ public class Student {
     private String emailAddress;
 
     @Column(name="phone_number")
-    private String phoneNumber;
+    private Integer phoneNumber;
 
     @Column(name="student_group_id")
     private Integer studentGroupId;
@@ -29,6 +31,19 @@ public class Student {
 
     @Column(name="student_card_number")
     private Integer studentCardNumber;
+
+    public Student () {}
+
+    public Student(String name, String secondName, String surname, String emailAddress, Integer phoneNumber, Integer studentGroupId, Integer indexNumber, Integer studentCardNumber) {
+        this.name = name;
+        this.secondName = secondName;
+        this.surname = surname;
+        this.emailAddress = emailAddress;
+        this.phoneNumber = phoneNumber;
+        this.studentGroupId = studentGroupId;
+        this.indexNumber = indexNumber;
+        this.studentCardNumber = studentCardNumber;
+    }
 
     @Override
     public String toString() {
