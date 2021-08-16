@@ -1,3 +1,5 @@
+import Entities.Student;
+
 import javax.persistence.*;
 
 public class UniversityExample {
@@ -6,5 +8,8 @@ public class UniversityExample {
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("university");
         EntityManager entityManager = emf.createEntityManager();
+
+        Student student = entityManager.find(Student.class, 1);
+        System.out.println(student);
     }
 }
