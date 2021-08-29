@@ -9,11 +9,13 @@ public class UniversityExample {
         StudentRepository studentRepository = new StudentRepository();
         Scanner scanner = new Scanner(System.in);
         Student student;
+        Integer indexNumber;
         int option;
         int id;
 
         do {
             System.out.println("1 - get student by ID");
+            System.out.println("6 - get student by index number");
             System.out.println("2 - get all students");
             System.out.println("3 - add new student to database");
             System.out.println("4 - change student's data");
@@ -31,14 +33,17 @@ public class UniversityExample {
                     student = studentRepository.getStudentByID(id);
                     System.out.println(student);
                     break;
+//                case 6:
+//                    // get student by index number
+//                    System.out.print("Index number (6 digits): ");
+//                    indexNumber = scanner.nextInt();
+//                    scanner.nextLine();
+//                    studentRepository.getStudentByIndexNumber(indexNumber);
+//
+//                    break;
                 case 2:
                     // get all students
-                    id = 1;
-                    while (studentRepository.getStudentByID(id) != null){
-                        student = studentRepository.getStudentByID(id);
-                        System.out.println(student);
-                        id++;
-                    }
+                    System.out.println(studentRepository.getAll());
                     break;
                 case 3:
                     // add new student to database
@@ -57,7 +62,7 @@ public class UniversityExample {
                     Integer studentGroupId = scanner.nextInt();
                     scanner.nextLine();
                     System.out.print("Index number (6 digits): ");
-                    Integer indexNumber = scanner.nextInt();
+                    indexNumber = scanner.nextInt();
                     scanner.nextLine();
                     System.out.print("Student card number (8 digits): ");
                     Integer studentCardNumber = scanner.nextInt();
@@ -67,6 +72,7 @@ public class UniversityExample {
                     System.out.println("Student "+name+" "+surname+" successfully added to database.");
                     break;
                 case 5:
+                    // remove student from database
                     System.out.print("Student's ID: ");
                     id = scanner.nextInt();
                     scanner.nextLine();
