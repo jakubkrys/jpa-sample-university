@@ -3,7 +3,7 @@ package repositories;
 import entities.Student;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.*;
 
 public class StudentRepository {
 

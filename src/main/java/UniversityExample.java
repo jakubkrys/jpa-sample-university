@@ -16,11 +16,11 @@ public class UniversityExample {
 
         do {
             System.out.println("1 - get student by ID");
-            System.out.println("6 - get student by index number");
-            System.out.println("2 - get all students");
-            System.out.println("3 - add new student to database");
-            System.out.println("4 - change student's data");
-            System.out.println("5 - remove student from database by ID");
+            System.out.println("2 - get student by index number");
+            System.out.println("3 - get all students");
+            System.out.println("4 - add new student to database");
+            System.out.println("5 - change student's data");
+            System.out.println("6 - remove student from database by ID");
             System.out.println("7 - remove student from database by student card number");
             System.out.println("0 - close app");
             option = scanner.nextInt();
@@ -35,7 +35,7 @@ public class UniversityExample {
                     student = studentRepository.getStudentByID(id);
                     System.out.println(student);
                     break;
-                case 6:
+                case 2:
                     // get student by index number
                     System.out.print("Index number (6 digits): ");
                     indexNumber = scanner.nextInt();
@@ -43,11 +43,11 @@ public class UniversityExample {
                     System.out.println(studentRepository.getStudentByIndexNumber(indexNumber));
 
                     break;
-                case 2:
+                case 3:
                     // get all students
                     System.out.println(studentRepository.getAll());
                     break;
-                case 3:
+                case 4:
                     // add new student to database
                     System.out.print("Name: ");
                     String name = scanner.nextLine();
@@ -74,6 +74,8 @@ public class UniversityExample {
                     System.out.println("Student "+name+" "+surname+" successfully added to database.");
                     break;
                 case 5:
+                    break;
+                case 6:
                     // remove student from database by ID
                     System.out.print("Student's ID: ");
                     id = scanner.nextInt();
