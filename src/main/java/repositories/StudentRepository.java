@@ -23,4 +23,15 @@ public class StudentRepository {
             entityManager.getTransaction().rollback();
         }
     }
+
+    public void removeStudentById(int id) {
+        try {
+            entityManager.getTransaction().begin();
+            Student student = getStudentByID(id);
+            entityManager.remove(student);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+        }
+    }
 }

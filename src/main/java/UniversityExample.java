@@ -17,7 +17,7 @@ public class UniversityExample {
             System.out.println("2 - get all students");
             System.out.println("3 - add new student to database");
             System.out.println("4 - change student's data");
-            System.out.println("5 - remove student from database");
+            System.out.println("5 - remove student from database by ID");
             System.out.println("0 - close app");
             option = scanner.nextInt();
             scanner.nextLine();
@@ -65,6 +65,13 @@ public class UniversityExample {
                     Student newStudent = new Student(name,secondName,surname,emailAddress,phoneNumber,studentGroupId,indexNumber,studentCardNumber);
                     studentRepository.saveStudentToDatabase(newStudent);
                     System.out.println("Student "+name+" "+surname+" successfully added to database.");
+                    break;
+                case 5:
+                    System.out.print("Student's ID: ");
+                    id = scanner.nextInt();
+                    scanner.nextLine();
+                    studentRepository.removeStudentById(id);
+                    System.out.println("Student "+id+" successfully removed from database.");
                     break;
             }
         } while (option != 0);
