@@ -8,7 +8,9 @@ public class UniversityExample {
 
         StudentRepository studentRepository = new StudentRepository();
         Scanner scanner = new Scanner(System.in);
+        Student student;
         int option;
+        int id;
 
         do {
             System.out.println("1 - get student by ID");
@@ -24,17 +26,46 @@ public class UniversityExample {
                 case 1:
                     // get student by ID
                     System.out.print("Student's ID: ");
-                    int id = scanner.nextInt();
+                    id = scanner.nextInt();
                     scanner.nextLine();
-                    Student student = studentRepository.getStudentByID(id);
+                    student = studentRepository.getStudentByID(id);
                     System.out.println(student);
+                    break;
+                case 2:
+                    // get all students
+                    id = 1;
+                    while (studentRepository.getStudentByID(id) != null){
+                        student = studentRepository.getStudentByID(id);
+                        System.out.println(student);
+                        id++;
+                    }
                     break;
                 case 3:
                     // add new student to database
-                    Student student1 = new Student("Adrian", "Spejson", "Puchacki", "adrian.puchacki@student.edu.pl", 222333444, 7, 404009, 87564231);
-                    studentRepository.saveStudentToDatabase(student1);
+                    System.out.print("Name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Second name: ");
+                    String secondName = scanner.nextLine();
+                    System.out.print("Surname: ");
+                    String surname = scanner.nextLine();
+                    System.out.print("E-mail address: ");
+                    String emailAddress = scanner.nextLine();
+                    System.out.print("Phone number (9 digits): ");
+                    Integer phoneNumber = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Student group ID: ");
+                    Integer studentGroupId = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Index number (6 digits): ");
+                    Integer indexNumber = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Student card number (8 digits): ");
+                    Integer studentCardNumber = scanner.nextInt();
+                    scanner.nextLine();
+                    Student newStudent = new Student(name,secondName,surname,emailAddress,phoneNumber,studentGroupId,indexNumber,studentCardNumber);
+                    studentRepository.saveStudentToDatabase(newStudent);
+                    System.out.println("Student "+name+" "+surname+" successfully added to database.");
                     break;
-
             }
         } while (option != 0);
         scanner.close();
