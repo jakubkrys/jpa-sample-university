@@ -10,6 +10,7 @@ public class UniversityExample {
         Scanner scanner = new Scanner(System.in);
         Student student;
         Integer indexNumber;
+        Integer studentCardNumber;
         int option;
         int id;
 
@@ -20,6 +21,7 @@ public class UniversityExample {
             System.out.println("3 - add new student to database");
             System.out.println("4 - change student's data");
             System.out.println("5 - remove student from database by ID");
+            System.out.println("7 - remove student from database by student card number");
             System.out.println("0 - close app");
             option = scanner.nextInt();
             scanner.nextLine();
@@ -33,14 +35,14 @@ public class UniversityExample {
                     student = studentRepository.getStudentByID(id);
                     System.out.println(student);
                     break;
-//                case 6:
-//                    // get student by index number
-//                    System.out.print("Index number (6 digits): ");
-//                    indexNumber = scanner.nextInt();
-//                    scanner.nextLine();
-//                    studentRepository.getStudentByIndexNumber(indexNumber);
-//
-//                    break;
+                case 6:
+                    // get student by index number
+                    System.out.print("Index number (6 digits): ");
+                    indexNumber = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println(studentRepository.getStudentByIndexNumber(indexNumber));
+
+                    break;
                 case 2:
                     // get all students
                     System.out.println(studentRepository.getAll());
@@ -65,19 +67,27 @@ public class UniversityExample {
                     indexNumber = scanner.nextInt();
                     scanner.nextLine();
                     System.out.print("Student card number (8 digits): ");
-                    Integer studentCardNumber = scanner.nextInt();
+                    studentCardNumber = scanner.nextInt();
                     scanner.nextLine();
                     Student newStudent = new Student(name,secondName,surname,emailAddress,phoneNumber,studentGroupId,indexNumber,studentCardNumber);
                     studentRepository.saveStudentToDatabase(newStudent);
                     System.out.println("Student "+name+" "+surname+" successfully added to database.");
                     break;
                 case 5:
-                    // remove student from database
+                    // remove student from database by ID
                     System.out.print("Student's ID: ");
                     id = scanner.nextInt();
                     scanner.nextLine();
                     studentRepository.removeStudentById(id);
                     System.out.println("Student "+id+" successfully removed from database.");
+                    break;
+                case 7:
+                    // remove student from database by student card number
+                    System.out.print("Student card number: ");
+                    studentCardNumber = scanner.nextInt();
+                    scanner.nextLine();
+                    studentRepository.removeStudentByStudentCardNumber(studentCardNumber);
+                    System.out.println("Student "+studentCardNumber+" successfully removed from database.");
                     break;
             }
         } while (option != 0);

@@ -36,21 +36,37 @@ public class StudentRepository {
         }
     }
 
-//    public Student getStudentByIndexNumber(Integer indexNumber) {
-//        try {
-//            entityManager.getTransaction().begin();
-//            entityManager.createQuery("SELECT s FROM Student s WHERE s.index_number=:indexNumber",Student.class);
-//
-//            entityManager.getTransaction().commit();
-//        } catch (Exception e) {
-//            entityManager.getTransaction().rollback();
-//        }
-//        return;
-//    }
+    public List<Student> getStudentByIndexNumber(Integer indexNumber){
+        // łączenie stringów
+//        TypedQuery <Student> student = entityManager.createQuery("SELECT s FROM Student s WHERE s.indexNumber = '"+indexNumber+"'",Student.class);
+
+        // parametry indeksowe
+//        TypedQuery <Student> student = entityManager.createQuery("SELECT s FROM Student s WHERE s.indexNumber = ?1",Student.class);
+//        student.setParameter(1,indexNumber);
+
+        // parametry nazwane
+        TypedQuery <Student> student = entityManager.createQuery("SELECT s FROM Student s WHERE s.indexNumber = :indexNumber",Student.class);
+        student.setParameter("indexNumber",indexNumber);
+
+        return student.getResultList();
+    }
 
     public List<Student> getAll() {
         TypedQuery <Student> query = entityManager.createQuery("SELECT s FROM Student s",Student.class);
         List <Student> allStudents = query.getResultList();
         return allStudents;
+    }
+
+    public void removeStudentByStudentCardNumber(Integer studentCardNumber) {
+        try {
+            entityManager.getTransaction().begin();
+            Query query = entityManager.createQuery("DELETE FROM Student s WHERE s.studentCardNumber = :studentCardNumber");
+            query.setParameter("studentCardNumber",studentCardNumber);
+            query.executeUpdate();
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e);
+            entityManager.getTransaction().rollback();
+        }
     }
 }
