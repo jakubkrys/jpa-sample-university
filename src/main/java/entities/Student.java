@@ -1,4 +1,4 @@
-package Entities;
+package entities;
 
 import javax.persistence.*;
 
@@ -47,16 +47,14 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", secondName='" + secondName + '\'' +
-                ", surname='" + surname + '\'' +
-                ", emailAddress='" + emailAddress + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", studentGroupId=" + studentGroupId +
-                ", indexNumber=" + indexNumber +
-                ", studentCardNumber=" + studentCardNumber +
-                '}';
+        return "\nSTUDENT "+id+":\n"+
+                " Name: " + name + "\n" +
+                " Second name: " + secondName + "\n" +
+                " Surname: " + surname + "\n" +
+                " E-mail address: " + emailAddress + "\n" +
+                " Phone number: " + phoneNumber + "\n" +
+                " Student group ID: " + studentGroupId + "\n" +
+                " Index number: " + indexNumber + "\n" +
+                " Student card number: " + studentCardNumber + "\n";
     }
 }
