@@ -41,7 +41,6 @@ public class UniversityExample {
                     indexNumber = scanner.nextInt();
                     scanner.nextLine();
                     System.out.println(studentRepository.getStudentByIndexNumber(indexNumber));
-
                     break;
                 case 3:
                     // get all students
@@ -49,31 +48,18 @@ public class UniversityExample {
                     break;
                 case 4:
                     // add new student to database
-                    System.out.print("Name: ");
-                    String name = scanner.nextLine();
-                    System.out.print("Second name: ");
-                    String secondName = scanner.nextLine();
-                    System.out.print("Surname: ");
-                    String surname = scanner.nextLine();
-                    System.out.print("E-mail address: ");
-                    String emailAddress = scanner.nextLine();
-                    System.out.print("Phone number (9 digits): ");
-                    Integer phoneNumber = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.print("Student group ID: ");
-                    Integer studentGroupId = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.print("Index number (6 digits): ");
-                    indexNumber = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.print("Student card number (8 digits): ");
-                    studentCardNumber = scanner.nextInt();
-                    scanner.nextLine();
-                    Student newStudent = new Student(name,secondName,surname,emailAddress,phoneNumber,studentGroupId,indexNumber,studentCardNumber);
+                    Student newStudent = studentRepository.gatherAllStudentData();
                     studentRepository.saveStudentToDatabase(newStudent);
-                    System.out.println("Student "+name+" "+surname+" successfully added to database.");
+                    System.out.println("Student "+newStudent.getName()+" "+newStudent.getSurname()+" successfully added to database.");
                     break;
                 case 5:
+                    // change student's data
+                    System.out.print("Student's ID: ");
+                    id = scanner.nextInt();
+                    scanner.nextLine();
+                    student = studentRepository.getStudentByID(id);
+                    studentRepository.editStudentData(student);
+                    System.out.println("Data of student "+id+": "+student.getName()+" "+student.getSurname()+" changed.");
                     break;
                 case 6:
                     // remove student from database by ID

@@ -45,6 +45,70 @@ public class Student {
         this.studentCardNumber = studentCardNumber;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public Integer getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Integer phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Integer getStudentGroupId() {
+        return studentGroupId;
+    }
+
+    public void setStudentGroupId(Integer studentGroupId) {
+        this.studentGroupId = studentGroupId;
+    }
+
+    public Integer getIndexNumber() {
+        return indexNumber;
+    }
+
+    public void setIndexNumber(Integer indexNumber) {
+        this.indexNumber = indexNumber;
+    }
+
+    public Integer getStudentCardNumber() {
+        return studentCardNumber;
+    }
+
+    public void setStudentCardNumber(Integer studentCardNumber) {
+        this.studentCardNumber = studentCardNumber;
+    }
+
     @Override
     public String toString() {
         return "\nSTUDENT "+id+":\n"+
