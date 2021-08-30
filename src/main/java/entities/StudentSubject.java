@@ -1,11 +1,10 @@
 package entities;
 
 import javax.persistence.*;
-import java.io.*;
 
 @Entity
 @Table(name="student_subject")
-public class StudentSubject implements Serializable {
+public class StudentSubject {
 
     @EmbeddedId
     private StudentSubjectId studentSubjectId;
