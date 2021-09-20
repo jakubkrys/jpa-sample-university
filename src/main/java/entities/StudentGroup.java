@@ -15,8 +15,7 @@ public class StudentGroup {
 
     public StudentGroup() {}
 
-    public StudentGroup(int id, String specialization) {
-        this.id = id;
+    public StudentGroup(String specialization) {
         this.specialization = specialization;
     }
 

@@ -1,7 +1,6 @@
 package repositories;
 
-import entities.Student;
-
+import entities.*;
 import javax.persistence.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;

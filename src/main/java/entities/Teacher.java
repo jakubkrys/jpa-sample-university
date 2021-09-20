@@ -33,14 +33,69 @@ public class Teacher {
 
     public Teacher() {}
 
-    public Teacher(int id, String name, String secondName, String surname, String emailAddress, Integer phoneNumber, String academicDegree, Integer subjectId) {
-        this.id = id;
+    public Teacher(String name, String secondName, String surname, String emailAddress, Integer phoneNumber, String academicDegree, Integer subjectId) {
         this.name = name;
         this.secondName = secondName;
         this.surname = surname;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
         this.academicDegree = academicDegree;
+        this.subjectId = subjectId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public Integer getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Integer phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAcademicDegree() {
+        return academicDegree;
+    }
+
+    public void setAcademicDegree(String academicDegree) {
+        this.academicDegree = academicDegree;
+    }
+
+    public Integer getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(Integer subjectId) {
         this.subjectId = subjectId;
     }
 

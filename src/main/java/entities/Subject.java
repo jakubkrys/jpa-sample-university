@@ -18,8 +18,7 @@ public class Subject {
 
     public Subject() {}
 
-    public Subject(int id, String name, Integer hoursPerSemester) {
-        this.id = id;
+    public Subject(String name, Integer hoursPerSemester) {
         this.name = name;
         this.hoursPerSemester = hoursPerSemester;
     }

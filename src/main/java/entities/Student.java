@@ -20,7 +20,7 @@ public class Student {
     @Column(name="email_address")
     private String emailAddress;
 
-    @Column(name="phone_number")
+    @Column(name="phone_number") 
     private Integer phoneNumber;
 
     @Column(name="student_group_id")

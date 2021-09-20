@@ -1,5 +1,7 @@
-import entities.Student;
+import entities.*;
 import repositories.StudentRepository;
+import repositories.TeacherRepository;
+
 import java.util.*;
 
 public class UniversityExample {
@@ -7,14 +9,18 @@ public class UniversityExample {
     public static void main(String[] args) {
 
         StudentRepository studentRepository = new StudentRepository();
+        TeacherRepository teacherRepository = new TeacherRepository();
         Scanner scanner = new Scanner(System.in);
         Student student;
+        Teacher teacher;
         Integer indexNumber;
         Integer studentCardNumber;
+        String academicDegree;
         int option;
         int id;
 
         do {
+            System.out.println("---------------- STUDENTS ------------");
             System.out.println("1 - get student by ID");
             System.out.println("2 - get student by index number");
             System.out.println("3 - get all students");
@@ -22,6 +28,16 @@ public class UniversityExample {
             System.out.println("5 - change student's data");
             System.out.println("6 - remove student from database by ID");
             System.out.println("7 - remove student from database by student card number");
+            System.out.println("--------------- TEACHERS ----------------");
+            System.out.println("11 - get teacher by ID");
+            System.out.println("12 - get teacher by subject ID");
+            System.out.println("13 - get teacher by academic degree");
+            System.out.println("14 - get all teachers");
+            System.out.println("15 - add new teacher to database");
+            System.out.println("16 - change teacher's data");
+            System.out.println("17 - remove teacher from database by ID");
+            System.out.println("-------------------------------------------------");
+
             System.out.println("0 - close app");
             option = scanner.nextInt();
             scanner.nextLine();
@@ -76,6 +92,56 @@ public class UniversityExample {
                     scanner.nextLine();
                     studentRepository.removeStudentByStudentCardNumber(studentCardNumber);
                     System.out.println("Student "+studentCardNumber+" successfully removed from database.");
+                    break;
+                case 11:
+                    // get teacher by ID
+                    System.out.print("Teacher's ID: ");
+                    id = scanner.nextInt();
+                    scanner.nextLine();
+                    teacher = teacherRepository.getTeacherByID(id);
+                    System.out.println(teacher);
+                    break;
+                case 12:
+                    // get teacher by subject ID
+                    System.out.print("Subject ID: ");
+                    id = scanner.nextInt();
+                    scanner.nextLine();
+                    List <Teacher> teachersById = teacherRepository.getTeacherBySubjectID(id);
+                    System.out.println(teachersById);
+                    break;
+                case 13:
+                    // get teacher by academic degree
+                    System.out.print("Academic degree: ");
+                    academicDegree = scanner.nextLine();
+                    List <Teacher> teachersByAcademicDegree = teacherRepository.getTeacherByAcademicDegree(academicDegree);
+                    System.out.println(teachersByAcademicDegree);
+                    break;
+                case 14:
+                    // get all teachers
+                    System.out.println(teacherRepository.getAll());
+                    break;
+                case 15:
+                    // add new teacher to database
+                    Teacher newTeacher = teacherRepository.gatherAllTeacherData();
+                    teacherRepository.saveTeacherToDatabase(newTeacher);
+                    System.out.println("Student "+newTeacher.getName()+" "+newTeacher.getSurname()+" successfully added to database.");
+                    break;
+                case 16:
+                    // change teacher's data
+                    System.out.print("Teacher's ID: ");
+                    id = scanner.nextInt();
+                    scanner.nextLine();
+                    teacher = teacherRepository.getTeacherByID(id);
+                    teacherRepository.editTeacherData(teacher);
+                    System.out.println("Data of teacher "+id+": "+teacher.getName()+" "+teacher.getSurname()+" changed.");
+                    break;
+                case 17:
+                    // remove teacher from database by ID
+                    System.out.print("Teacher's ID: ");
+                    id = scanner.nextInt();
+                    scanner.nextLine();
+                    teacherRepository.removeTeacherById(id);
+                    System.out.println("Teacher "+id+" successfully removed from database.");
                     break;
             }
         } while (option != 0);
