@@ -23,6 +23,30 @@ public class Subject {
         this.hoursPerSemester = hoursPerSemester;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getHoursPerSemester() {
+        return hoursPerSemester;
+    }
+
+    public void setHoursPerSemester(Integer hoursPerSemester) {
+        this.hoursPerSemester = hoursPerSemester;
+    }
+
     @Override
     public String toString() {
         return "\nSUBJECT " + id + ":\n" +

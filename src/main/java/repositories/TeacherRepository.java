@@ -11,6 +11,7 @@ public class TeacherRepository {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("university");
     EntityManager entityManager = emf.createEntityManager();
     Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
+    SubjectRepository subjectRepository = new SubjectRepository();
 
     public Teacher getTeacherByID(int id) {
         Teacher teacher = entityManager.find(Teacher.class, id);
@@ -47,7 +48,7 @@ public class TeacherRepository {
 ////        Teacher.setParameter(1,indexNumber);
 //
 //        // parametry nazwane
-        TypedQuery <Teacher> teacher = entityManager.createQuery("SELECT t FROM Teacher t WHERE t.subjectId = :subjectID",Teacher.class);
+        TypedQuery <Teacher> teacher = entityManager.createQuery("SELECT t FROM Teacher t WHERE t.subject.id = :subjectID",Teacher.class);
         teacher.setParameter("subjectID",subjectID);
 
         return teacher.getResultList();
@@ -153,12 +154,12 @@ public class TeacherRepository {
                 entityManager.getTransaction().commit();
                 break;
             case 7:
-                System.out.println("Current subject ID: "+teacher.getSubjectId());
+                System.out.println("Current subject ID: "+teacher.getSubject().getId());
                 System.out.print("New subject ID: ");
                 Integer newSubjectId = scanner.nextInt();
                 scanner.nextLine();
                 entityManager.getTransaction().begin();
-                teacher.setSubjectId(newSubjectId);
+                teacher.setSubject(subjectRepository.getSubjectByID(newSubjectId));
                 entityManager.getTransaction().commit();
                 break;
         }
@@ -182,6 +183,7 @@ public class TeacherRepository {
         System.out.print("Subject ID: ");
         Integer subjectId = scanner.nextInt();
         scanner.nextLine();
-        return new Teacher(name,secondName,surname,emailAddress,phoneNumber,academicDegree,subjectId);
+        Subject subject = subjectRepository.getSubjectByID(subjectId);
+        return new Teacher(name,secondName,surname,emailAddress,phoneNumber,academicDegree,subject);
     }
 }

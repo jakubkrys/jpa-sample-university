@@ -1,7 +1,5 @@
 import entities.*;
-import repositories.StudentRepository;
-import repositories.TeacherRepository;
-
+import repositories.*;
 import java.util.*;
 
 public class UniversityExample {
@@ -10,12 +8,15 @@ public class UniversityExample {
 
         StudentRepository studentRepository = new StudentRepository();
         TeacherRepository teacherRepository = new TeacherRepository();
+        SubjectRepository subjectRepository = new SubjectRepository();
         Scanner scanner = new Scanner(System.in);
         Student student;
         Teacher teacher;
+        Subject subject;
         Integer indexNumber;
         Integer studentCardNumber;
         String academicDegree;
+        String subjectName;
         int option;
         int id;
 
@@ -36,6 +37,14 @@ public class UniversityExample {
             System.out.println("15 - add new teacher to database");
             System.out.println("16 - change teacher's data");
             System.out.println("17 - remove teacher from database by ID");
+            System.out.println("------------- SUBJECTS --------------");
+            System.out.println("21 - get subject by ID");
+            System.out.println("22 - get subject by name");
+            System.out.println("23 - get subject by hours per semester");
+            System.out.println("24 - get all subjects");
+            System.out.println("25 - add new subject to database");
+            System.out.println("26 - change subject's data");
+            System.out.println("27 - remove subject from database by ID");
             System.out.println("-------------------------------------------------");
 
             System.out.println("0 - close app");
@@ -142,6 +151,36 @@ public class UniversityExample {
                     scanner.nextLine();
                     teacherRepository.removeTeacherById(id);
                     System.out.println("Teacher "+id+" successfully removed from database.");
+                    break;
+                case 21:
+                    // get subject by ID
+                    System.out.print("Subject's ID: ");
+                    id = scanner.nextInt();
+                    scanner.nextLine();
+                    subject = subjectRepository.getSubjectByID(id);
+                    System.out.println(subject);
+                    break;
+                case 22:
+                    // get subject by name
+                    System.out.print("Subject name: ");
+                    subjectName = scanner.nextLine();
+                    System.out.println(subjectRepository.getSubjectByName(subjectName));
+                    break;
+                case 23:
+                    // get subject by hours per semester
+                    System.out.print("Hours per semester: ");
+                    Integer hoursPerSemester = scanner.nextInt();
+                    scanner.nextLine();
+                    List <Subject> subjectByHoursPerSemester = subjectRepository.getSubjectByHoursPerSemester(hoursPerSemester);
+                    System.out.println(subjectByHoursPerSemester);
+                    break;
+                case 24:
+                    break;
+                case 25:
+                    break;
+                case 26:
+                    break;
+                case 27:
                     break;
             }
         } while (option != 0);

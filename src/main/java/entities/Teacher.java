@@ -28,19 +28,19 @@ public class Teacher {
     @Column(name="academic_degree")
     private String academicDegree;
 
-    @Column(name="subject_id")
-    private Integer subjectId;
+    @ManyToOne
+    private Subject subject;
 
     public Teacher() {}
 
-    public Teacher(String name, String secondName, String surname, String emailAddress, Integer phoneNumber, String academicDegree, Integer subjectId) {
+    public Teacher(String name, String secondName, String surname, String emailAddress, Integer phoneNumber, String academicDegree, Subject subject) {
         this.name = name;
         this.secondName = secondName;
         this.surname = surname;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
         this.academicDegree = academicDegree;
-        this.subjectId = subjectId;
+        this.subject = subject;
     }
 
     public String getName() {
@@ -91,12 +91,12 @@ public class Teacher {
         this.academicDegree = academicDegree;
     }
 
-    public Integer getSubjectId() {
-        return subjectId;
+    public Subject getSubject() {
+        return subject;
     }
 
-    public void setSubjectId(Integer subjectId) {
-        this.subjectId = subjectId;
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 
     @Override
@@ -108,6 +108,6 @@ public class Teacher {
                 " E-mail address: " + emailAddress + "\n" +
                 " Phone number: " + phoneNumber + "\n" +
                 " Academic degree: " + academicDegree + "\n" +
-                " Subject ID: " + subjectId + "\n";
+                " Subject: " + subject + "\n";
     }
 }
