@@ -175,12 +175,32 @@ public class UniversityExample {
                     System.out.println(subjectByHoursPerSemester);
                     break;
                 case 24:
+                    // get all subjects
+                    List <Subject> subjects = subjectRepository.getAll();
+                    System.out.println(subjects);
                     break;
                 case 25:
+                    // add new subject to database
+                    Subject newSubject = subjectRepository.gatherAllSubjectData();
+                    subjectRepository.saveSubjectToDatabase(newSubject);
+                    System.out.println("Subject "+newSubject.getName()+" successfully added to database.");
                     break;
                 case 26:
+                    // change subject's data
+                    System.out.print("Subject's ID: ");
+                    id = scanner.nextInt();
+                    scanner.nextLine();
+                    subject = subjectRepository.getSubjectByID(id);
+                    subjectRepository.editSubjectData(subject);
+                    System.out.println("Data of subject "+id+": "+subject.getName()+" changed.");
                     break;
                 case 27:
+                    // remove subject from database
+                    System.out.print("Subject's ID: ");
+                    id = scanner.nextInt();
+                    scanner.nextLine();
+                    subjectRepository.removeSubjectById(id);
+                    System.out.println("Subject "+id+" successfully removed from database.");
                     break;
             }
         } while (option != 0);

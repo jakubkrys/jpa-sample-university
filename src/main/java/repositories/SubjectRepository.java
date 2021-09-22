@@ -17,7 +17,7 @@ public class SubjectRepository {
         return subject;
     }
 
-    public void saveStudentToDatabase(Subject subject) {
+    public void saveSubjectToDatabase(Subject subject) {
         try {
             entityManager.getTransaction().begin();
             entityManager.persist(subject);
